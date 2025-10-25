@@ -1,0 +1,66 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Personal Life Manager",
+    "version" : "1.0"
+  },
+  "servers" : [ {
+    "url" : "https://nno3q5ecp6.execute-api.us-west-2.amazonaws.com/Stage/api"
+    },
+    {
+    "url" : "http://127.0.0.1:5000/api"
+    }
+  ],
+  "paths" : {
+    "/categories" : {
+      "get" : {
+        "tags": ["Categories"],
+        "responses": {},
+        "security": []
+      }
+    },
+    "/products" : {
+      "get" : {
+        "tags": ["Products"],
+        "responses": {},
+        "security": []
+      },
+      "post" : {
+        "tags": ["Products"],
+        "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/newProduct"
+                }
+              }
+            }
+          },
+        "responses": {},
+        "security": []
+      }
+    }
+  },
+  "components" : {
+    "schemas": {
+      "newProduct": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Chair"
+          },
+          "categoryId": {
+            "type": "integer",
+            "example": 1
+          },
+          "stockQuantity": {
+            "type": "integer",
+            "example": 1
+          }
+        }
+      }
+    }
+  }
+}
