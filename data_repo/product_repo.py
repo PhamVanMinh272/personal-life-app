@@ -123,7 +123,7 @@ class ProductRepo:
                     url = PICTURE_PATH.rstrip("/") + ("/" + filename if filename else "")
                 elif "resources" in norm or (PICTURE_PATH and "resources" in PICTURE_PATH):
                     # served by your blueprint at /products/pictures/<filename>
-                    url = f"/products/pictures/{filename}" if filename else norm
+                    url = f"/api/products/pictures/{filename}" if filename else norm
                 else:
                     # fallback: normalized filesystem path
                     url = norm
