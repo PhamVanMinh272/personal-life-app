@@ -40,6 +40,13 @@
         "responses": {},
         "security": []
       }
+    },
+    "/products/{productId}/attach-picture" : {
+      "post" : {
+        "tags": ["Products"],
+        "responses": {},
+        "security": []
+      }
     }
   },
   "components" : {
