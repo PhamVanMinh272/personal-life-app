@@ -10,3 +10,19 @@ CREATE TABLE IF NOT EXISTS product (
     stock_quantity INTEGER NOT NULL DEFAULT 0
 );
 
+CREATE TABLE IF NOT EXISTS picture (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL UNIQUE,
+    path TEXT NOT NULL UNIQUE,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS product_picture (
+    product_id INTEGER NOT NULL,
+    picture_id INTEGER NOT NULL,
+    PRIMARY KEY (product_id, picture_id),
+    FOREIGN KEY (product_id) REFERENCES product(id) ON DELETE CASCADE,
+    FOREIGN KEY (picture_id) REFERENCES picture(id) ON DELETE CASCADE
+);
+
+

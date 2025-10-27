@@ -16,6 +16,7 @@ if ENV == "local":
         SQLITE_PATH = "resources/personal_life.db"
         DDL_PATH = os.path.join("resources", "ddl.sql")
         DML_PATH = os.path.join("resources", "dml.sql")
+        PICTURE_PATH = os.path.join("resources", "pictures")
 
     if not os.path.exists(SQLITE_PATH):
         # to init db in local env, please comment this block
@@ -24,3 +25,4 @@ if ENV == "local":
         SQLITE_PATH = os.path.join(os.pardir, "resources", "personal_life.db")
         DDL_PATH = os.path.join(os.pardir, "resources", "ddl.sql")
         DML_PATH = os.path.join(os.pardir, "resources", "dml.sql")
+        PICTURE_PATH = "personal_life_app/pictures" # s3

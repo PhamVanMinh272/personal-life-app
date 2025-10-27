@@ -14,3 +14,11 @@ def create_product(conn, **kwargs):
     product_data = NewProductSch(**kwargs)
     product_id = ProductService(conn).create_product(product_data)
     return {"data": {"productId": product_id}}
+
+
+@db_context_manager
+def attach_picture_to_product(conn, **kwargs):
+    product_id = kwargs.get("productId")
+    picture_data = kwargs.get("pictureData")
+    picture_id, picture_url = ProductService(conn).attach_picture_to_product(product_id, picture_data)
+    return {"data": {"pictureId": picture_id, "pictureUrl": picture_url}}
