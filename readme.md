@@ -47,3 +47,8 @@ Example:
 5. Init DB locally
 - Set source as Root folder of project
 - Run efs_lambda with task_type='init_db'
+
+
+6. U2net
+- link repo: git clone https://github.com/xuebinqin/U-2-Net.git
+- link model: https://huggingface.co/FireCRT/VideoStudio/blob/main/u2net.pth
