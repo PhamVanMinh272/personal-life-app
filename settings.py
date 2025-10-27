@@ -25,4 +25,4 @@ if ENV == "local":
         SQLITE_PATH = os.path.join(os.pardir, "resources", "personal_life.db")
         DDL_PATH = os.path.join(os.pardir, "resources", "ddl.sql")
         DML_PATH = os.path.join(os.pardir, "resources", "dml.sql")
-        PICTURE_PATH = "personal_life_app/pictures" # s3
+        PICTURE_PATH = "personal_life_app/pictures"  # s3

@@ -27,9 +27,14 @@ def attach_picture_to_product(productId):
     try:
         picture_data = picture_file.read()
     except Exception as e:
-        return jsonify({"error": "failed to read uploaded file", "details": str(e)}), 500
+        return (
+            jsonify({"error": "failed to read uploaded file", "details": str(e)}),
+            500,
+        )
 
-    result = products.attach_picture_to_product(productId=productId, pictureData=picture_data)
+    result = products.attach_picture_to_product(
+        productId=productId, pictureData=picture_data
+    )
 
     # normalize and return JSON so Swagger can display response
     if isinstance(result, dict):
@@ -40,7 +45,6 @@ def attach_picture_to_product(productId):
         return jsonify({"success": False}), 400
 
     return jsonify({"result": result}), 200
-
 
 
 @products_router.route("/pictures/<path:filename>", methods=["GET"])

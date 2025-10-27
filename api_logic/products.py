@@ -20,5 +20,7 @@ def create_product(conn, **kwargs):
 def attach_picture_to_product(conn, **kwargs):
     product_id = kwargs.get("productId")
     picture_data = kwargs.get("pictureData")
-    picture_id, picture_url = ProductService(conn).attach_picture_to_product(product_id, picture_data)
+    picture_id, picture_url = ProductService(conn).attach_picture_to_product(
+        product_id, picture_data
+    )
     return {"data": {"pictureId": picture_id, "pictureUrl": picture_url}}

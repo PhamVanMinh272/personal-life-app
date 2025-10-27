@@ -2,3 +2,7 @@ flask
 pydantic
 flask-cors==6.0.1
 black
+torch
+torchvision
+opencv-python
+pillow

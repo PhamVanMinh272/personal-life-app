@@ -120,8 +120,12 @@ class ProductRepo:
                 norm = raw_path.replace("\\", "/")
                 filename = os.path.basename(norm) if norm else ""
                 if PICTURE_PATH and PICTURE_PATH.startswith(("http://", "https://")):
-                    url = PICTURE_PATH.rstrip("/") + ("/" + filename if filename else "")
-                elif "resources" in norm or (PICTURE_PATH and "resources" in PICTURE_PATH):
+                    url = PICTURE_PATH.rstrip("/") + (
+                        "/" + filename if filename else ""
+                    )
+                elif "resources" in norm or (
+                    PICTURE_PATH and "resources" in PICTURE_PATH
+                ):
                     # served by your blueprint at /products/pictures/<filename>
                     url = f"/api/products/pictures/{filename}" if filename else norm
                 else:
@@ -148,7 +152,9 @@ class ProductRepo:
         self._conn.commit()
         return self._cursor.lastrowid
 
-    def create_picture(self, product_id: int, picture_name: str = None, picture_url: str = None):
+    def create_picture(
+        self, product_id: int, picture_name: str = None, picture_url: str = None
+    ):
         # name = <product_id>_<timestamp>.jpg
         self._cursor.execute(
             """
