@@ -1,6 +1,6 @@
 from flask import Blueprint
 
-from api_logic import categories
+from src.api_logic import categories
 
 categories_router = Blueprint("categories", __name__)
 

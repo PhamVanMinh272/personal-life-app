@@ -219,7 +219,10 @@ __marimo__/
 .idea/
 
 .aws-sam/
+resources/pictures/
 
 *.db
 
-.pth
+*.pth
+src/lambda_api/*.zip
+infras/.terraform*

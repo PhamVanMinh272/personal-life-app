@@ -3,7 +3,7 @@ import torch
 from PIL import Image
 import numpy as np
 from torchvision import transforms
-from services.u2net.model import U2NET  # from U-2-Net repo
+from src.services.u2net.model import U2NET  # from U-2-Net repo
 
 
 def remove_background(image_path, output_path):

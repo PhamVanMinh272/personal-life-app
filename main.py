@@ -1,8 +1,7 @@
 from flask import Flask
 from flask_cors import CORS
 
-from flask_api.categories import categories_router
-from flask_api.products import products_router
+from src.flask_api import categories_router, products_router
 from swagger.flask_main import swagger_bp
 
 app = Flask(__name__)

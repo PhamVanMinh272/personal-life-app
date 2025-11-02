@@ -3,7 +3,7 @@ import sqlite3
 
 from pydantic import ValidationError
 
-from common.exceptions import FileS3NotFound, AlreadyExist, NotFound, InvalidData
+from src.common.exceptions import FileS3NotFound, AlreadyExist, NotFound, InvalidData
 from settings import logger
 
 

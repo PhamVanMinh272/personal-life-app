@@ -1,6 +1,5 @@
-import datetime
-
-from schema.pydantic_models.product import NewProductSch
+from src.schema.pydantic_models.common_schemas import Sort
+from src.schema.pydantic_models.product import NewProductSch
 from settings import PICTURE_PATH
 
 
@@ -62,20 +61,21 @@ class ProductRepo:
     #     return products
 
     # python
-    def get_products(self):
+    def get_products(self, sort_schema: Sort):
         """
         Returns products with attached pictures. Picture `path` values are converted
         to browser-accessible URLs when possible.
         """
         import os
-
-        self._cursor.execute(
-            """
+        stmt = """
         SELECT product.id, product.name, category_id, category.name as category_name, stock_quantity
         FROM product
         JOIN category ON product.category_id = category.id
-        ORDER BY product.name
+        ORDER BY product.id desc
         """
+
+        self._cursor.execute(
+            stmt
         )
         rows = self._cursor.fetchall()
         products = [

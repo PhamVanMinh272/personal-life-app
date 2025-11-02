@@ -1,5 +1,5 @@
-from common.db_connection import db_context_manager
-from services.categories import CategoriesService
+from src.common.db_connection import db_context_manager
+from src.services.categories import CategoriesService
 
 
 @db_context_manager

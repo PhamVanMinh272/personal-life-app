@@ -1,11 +1,13 @@
-from common.db_connection import db_context_manager
-from schema.pydantic_models.product import NewProductSch
-from services.products import ProductService
+from src.common.db_connection import db_context_manager
+from src.schema.pydantic_models.product import NewProductSch
+from src.schema.pydantic_models.common_schemas import Sort
+from src.services.products import ProductService
 
 
 @db_context_manager
 def get_products(conn, **kwargs):
-    products = ProductService(conn).get_products()
+    sort_schema = Sort(**kwargs)
+    products = ProductService(conn).get_products(sort_schema)
     return {"data": products}
 
 

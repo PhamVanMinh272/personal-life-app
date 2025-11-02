@@ -4,7 +4,7 @@ import os
 
 import boto3
 
-from common.db_connection import connect_db, initialize_db
+from src.common.db_connection import connect_db, initialize_db
 from settings import SQLITE_PATH, DDL_PATH, DML_PATH, logger
 
 

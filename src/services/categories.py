@@ -1,4 +1,4 @@
-from data_repo.session_repo import CategoriesRepo
+from src.data_repo import CategoriesRepo
 
 
 class CategoriesService:

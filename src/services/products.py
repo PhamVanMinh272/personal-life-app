@@ -1,19 +1,20 @@
 import datetime
 from pathlib import Path
 
-from data_repo.product_repo import ProductRepo
-from schema.pydantic_models.product import NewProductSch
-from common.s3_client import S3Client
+from src.data_repo import ProductRepo
+from src.schema.pydantic_models.product import NewProductSch
+from src.schema.pydantic_models.common_schemas import Sort
+from src.common.s3_client import S3Client
 from settings import ENV, logger
-from services.u2net import u2net
+from src.services.u2net import u2net
 
 
 class ProductService:
     def __init__(self, conn):
         self._conn = conn
 
-    def get_products(self):
-        return ProductRepo(self._conn).get_products()
+    def get_products(self, sort_schema: Sort):
+        return ProductRepo(self._conn).get_products(sort_schema)
 
     def create_product(self, new_product: NewProductSch):
         return ProductRepo(self._conn).create_product(new_product)
