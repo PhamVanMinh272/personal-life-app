@@ -51,3 +51,8 @@ resource "aws_lambda_function" "pl_products_function" {
 
     layers = [aws_lambda_layer_version.pl_layer.arn]
 }
+
+resource "aws_iam_role_policy_attachment" "pl_lambda_logging" {
+  role       = aws_iam_role.pl_lambda_role.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+}
