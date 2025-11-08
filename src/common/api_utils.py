@@ -4,7 +4,7 @@ import sqlite3
 from pydantic import ValidationError
 
 from src.common.exceptions import FileS3NotFound, AlreadyExist, NotFound, InvalidData
-from settings import logger
+from src.settings import logger
 
 
 def exception_handler(func):

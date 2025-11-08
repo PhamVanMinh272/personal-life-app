@@ -1,9 +1,9 @@
 from enum import Enum
 
 
-class RoutePattern(str, Enum):
+class RoutePattern:
     class Products(str, Enum):
-        BASE = "/api/products"
-        PICTURES = "/api/products/pictures/<filename>"
-        BASE_WITH_ID = "/api/products/<int:productId>"
-        ATTACH_PICTURE = "/api/products/<int:productId>/attach-picture"
+        BASE = "/api/v1/products"
+        PICTURES = "/api/v1/products/pictures/<filename>"
+        BASE_WITH_ID = "/api/v1/products/<int:productId>"
+        ATTACH_PICTURE = "/api/v1/products/<int:productId>/attach-picture"

@@ -1,7 +1,7 @@
 import os
 import sqlite3
 
-from settings import SQLITE_PATH, logger
+from src.settings import SQLITE_PATH, logger
 
 
 def connect_db(db_path: str = SQLITE_PATH):

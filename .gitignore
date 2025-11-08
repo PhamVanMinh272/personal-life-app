@@ -225,4 +225,4 @@ resources/pictures/
 
 *.pth
 src/lambda_api/*.zip
-infras/.terraform*
+infra/.terraform*

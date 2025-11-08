@@ -34,11 +34,20 @@ resource "aws_api_gateway_rest_api" "pl_api_gateway" {
     description = "API Gateway for PL service"
 }
 
+resource "aws_lambda_layer_version" "pl_layer" {
+  layer_name          = "pl-layer"
+  filename            = data.archive_file.pl_lambda_layer_zip.output_path
+  compatible_runtimes = ["python3.11"]
+  source_code_hash    = data.archive_file.pl_lambda_layer_zip.output_base64sha256
+}
+
 resource "aws_lambda_function" "pl_products_function" {
     function_name = "pl-products-function"
     role          = aws_iam_role.pl_lambda_role.arn
-    handler       = "lambda_api.products.lambda_handler"
+    handler       = "src.lambda_api.products.lambda_handler"
     runtime       = "python3.11"
     filename      = data.archive_file.products_lambda_zip.output_path
     source_code_hash = data.archive_file.products_lambda_zip.output_base64sha256
+
+    layers = [aws_lambda_layer_version.pl_layer.arn]
 }

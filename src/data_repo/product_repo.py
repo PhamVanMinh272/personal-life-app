@@ -1,6 +1,6 @@
 from src.schema.pydantic_models.common_schemas import Sort
 from src.schema.pydantic_models.product import NewProductSch
-from settings import PICTURE_PATH
+from src.settings import PICTURE_PATH
 
 
 class ProductRepo:

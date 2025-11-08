@@ -16,9 +16,9 @@ In working directory of Pycharm config, set to /badminton_recharging (not badmin
 
 Problem:
 1. Create python layer:
-pip install <libs> -t python
-Note: libs must be compatible with linux os
-pip install --platform manylinux2014_x86_64 --target=. --implementation cp --python-version 3.11 --only-binary=:all: --upgrade fastapi pydantic
+pip install -r .\requirement_aws_standard.txt -t layer/python_standard
+Note: libs must be compatible with linux os, aws layer requires folder /python in zip file. Use following command to install dependencies for aws lambda layer:
+pip install --platform manylinux2014_x86_64 --target=layer/python_standard/python --implementation cp --python-version 3.11 --only-binary=:all: --upgrade -r .\requirement_aws_standard.txt
 
 2. CORS error for aws lambda application
 

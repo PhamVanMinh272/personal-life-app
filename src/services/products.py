@@ -5,7 +5,7 @@ from src.data_repo import ProductRepo
 from src.schema.pydantic_models.product import NewProductSch
 from src.schema.pydantic_models.common_schemas import Sort
 from src.common.s3_client import S3Client
-from settings import ENV, logger
+from src.settings import ENV, logger
 from src.services.u2net import u2net
 
 
