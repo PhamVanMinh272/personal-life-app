@@ -5,7 +5,7 @@
     "version" : "1.0"
   },
   "servers" : [ {
-    "url" : "https://nww02jxy1i.execute-api.us-west-2.amazonaws.com/dev/api"
+    "url" : "https://nww02jxy1i.execute-api.us-west-2.amazonaws.com/dev/api/v1"
     },
     {
     "url" : "http://127.0.0.1:5000/api"
