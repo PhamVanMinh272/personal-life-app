@@ -37,7 +37,7 @@ resource "aws_api_gateway_rest_api" "pl_api_gateway" {
 resource "aws_lambda_function" "pl_products_function" {
     function_name = "pl-products-function"
     role          = aws_iam_role.pl_lambda_role.arn
-    handler       = "index.handler"
+    handler       = "lambda_api.products.lambda_handler"
     runtime       = "python3.11"
     filename      = data.archive_file.products_lambda_zip.output_path
     source_code_hash = data.archive_file.products_lambda_zip.output_base64sha256
