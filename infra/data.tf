@@ -1,3 +1,10 @@
+
+data "archive_file" "swagger_lambda_zip" {
+  type        = "zip"
+  source_dir  = "${path.module}/../swagger"
+  output_path = "${path.module}/../swagger_lambda.zip"
+}
+
 data "archive_file" "products_lambda_zip" {
   type        = "zip"
   source_dir  = "${path.module}/.."
