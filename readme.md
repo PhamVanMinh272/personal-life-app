@@ -1,5 +1,6 @@
 Features:
 Show items in the house.
+Local: http://127.0.0.1:5000/api/swagger/
 
 Swagger ui: https://nno3q5ecp6.execute-api.us-west-2.amazonaws.com/Stage/api/swagger
 

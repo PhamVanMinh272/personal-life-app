@@ -20,6 +20,12 @@ resource "aws_api_gateway_resource" "v1" {
   path_part   = "v1"
 }
 
+resource "aws_api_gateway_resource" "categories" {
+  rest_api_id = local.rest_api_id
+  parent_id   = aws_api_gateway_resource.v1.id
+  path_part   = "categories"
+}
+
 resource "aws_api_gateway_resource" "products" {
   rest_api_id = local.rest_api_id
   parent_id   = aws_api_gateway_resource.v1.id
@@ -30,6 +36,13 @@ resource "aws_api_gateway_resource" "swagger" {
   rest_api_id = local.rest_api_id
   parent_id   = aws_api_gateway_resource.v1.id
   path_part   = "swagger"
+}
+
+resource "aws_api_gateway_method" "categories_get" {
+  rest_api_id   = local.rest_api_id
+  resource_id   = aws_api_gateway_resource.categories.id
+  http_method   = "GET"
+  authorization = "NONE"
 }
 
 resource "aws_api_gateway_method" "products_get" {
@@ -44,6 +57,15 @@ resource "aws_api_gateway_method" "swagger_get" {
   resource_id   = aws_api_gateway_resource.swagger.id
   http_method   = "GET"
   authorization = "NONE"
+}
+
+resource "aws_api_gateway_integration" "categories_lambda" {
+  rest_api_id             = local.rest_api_id
+  resource_id             = aws_api_gateway_resource.categories.id
+  http_method             = aws_api_gateway_method.categories_get.http_method
+  integration_http_method = "POST"
+  type                    = "AWS_PROXY"
+  uri                     = aws_lambda_function.pl_categories_function.invoke_arn
 }
 
 resource "aws_api_gateway_integration" "products_lambda" {
@@ -62,6 +84,14 @@ resource "aws_api_gateway_integration" "swagger_lambda" {
   integration_http_method = "POST"
   type                    = "AWS_PROXY"
   uri                     = aws_lambda_function.pl_swagger_function.invoke_arn
+}
+
+resource "aws_lambda_permission" "categories_permission" {
+  statement_id  = "AllowAPIGatewayInvoke"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.pl_categories_function.function_name
+  principal     = "apigateway.amazonaws.com"
+  source_arn    = "${local.execution_arn}/*/*"
 }
 
 resource "aws_lambda_permission" "products_permission" {

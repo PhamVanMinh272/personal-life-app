@@ -45,6 +45,17 @@ resource "aws_lambda_function" "pl_swagger_function" {
     source_code_hash = data.archive_file.swagger_lambda_zip.output_base64sha256
 }
 
+resource "aws_lambda_function" "pl_categories_function" {
+    function_name = "pl-categories-function"
+    role          = aws_iam_role.pl_lambda_role.arn
+    handler       = "src.lambda_api.products.lambda_handler"
+    runtime       = "python3.11"
+    filename      = data.archive_file.products_lambda_zip.output_path
+    source_code_hash = data.archive_file.products_lambda_zip.output_base64sha256
+
+    layers = [aws_lambda_layer_version.pl_layer.arn]
+}
+
 resource "aws_lambda_function" "pl_products_function" {
     function_name = "pl-products-function"
     role          = aws_iam_role.pl_lambda_role.arn
